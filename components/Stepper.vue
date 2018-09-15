@@ -1,31 +1,30 @@
 <template>
-    <v-stepper v-model="e6"
-               vertical>
+  <v-stepper v-model="e6"
+             vertical>
+    <v-stepper-step :complete="$store.state.currStep > 1"
+                    step="1">
+      Enter User ID
+    </v-stepper-step>
 
-        <v-stepper-step :complete="$store.state.currStep > 1"
-                        step="1">
-            Enter User ID
-        </v-stepper-step>
+    <v-stepper-content step="1">
+      <StepOne v-on:validate-user="fetchFirstSentence()" />
+    </v-stepper-content>
 
-        <v-stepper-content step="1">
-            <StepOne v-on:validate-user="fetchFirstSentence()" />
-        </v-stepper-content>
+    <v-stepper-step :complete="$store.state.currStep > 2"
+                    step="2">
+      Record a Sentence
+      <small>Press "Start" button and wait for a readout sentence to appear.</small>
+    </v-stepper-step>
 
-        <v-stepper-step :complete="$store.state.currStep > 2"
-                        step="2">
-            Record a Sentence
-            <small>Press "Start" button and wait for a readout sentence to appear.</small>
-        </v-stepper-step>
+    <v-stepper-content step="2">
+      <StepTwo v-on:start="startRecording()"
+               v-on:skip="skipSentence()"
+               v-on:upload="uploadRecording()"
+               v-on:stop="stopRecording()"
+               v-on:retry="retryRecording()" />
+    </v-stepper-content>
 
-        <v-stepper-content step="2">
-            <StepTwo v-on:start="startRecording()"
-                     v-on:skip="skipSentence()"
-                     v-on:upload="uploadRecording()"
-                     v-on:stop="stopRecording()"
-                     v-on:retry="retryRecording()" />
-        </v-stepper-content>
-
-    </v-stepper>
+  </v-stepper>
 </template>
 
 <script>
@@ -162,9 +161,9 @@ export default {
 
     uploadRecording() {
       const AWSService = AWS;
-      const bucketName = "asr-heb-train-data";
-      const bucketRegion = "us-east-1";
-      const IdentityPoolId = "us-east-1:117fa1ae-e930-4421-9cdf-3ea355d02a01";
+      const bucketName = "<AMAZON-BUCKET-NAME>";
+      const bucketRegion = "<AMAZON-BUCKET-REGION>";
+      const IdentityPoolId = "<AMAZON-IDENTITY-POOL-ID>";
 
       //Configures the AWS service and initial authorization
       AWSService.config.update({

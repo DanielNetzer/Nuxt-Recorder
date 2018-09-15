@@ -8,7 +8,7 @@ const createStore = () => {
             currSentenceData: null,
             userId: null,
             currStep: 1,
-            isAudioAvail: false,
+            isAudioAvail: true,
             audioSrc: null,
             currFile: {
                 name: null,

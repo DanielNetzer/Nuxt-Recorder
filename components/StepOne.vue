@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <v-text-field v-model="userId"
-                      label="User ID"
-                      required></v-text-field>
-        <v-btn color="primary"
-               @click="$emit('validate-user')"
-               :disabled="!$store.state.userId">Submit</v-btn>
-    </div>
+  <div>
+    <v-text-field v-model="userId"
+                  label="User ID"
+                  required></v-text-field>
+    <v-btn color="primary"
+           @click="$emit('validate-user')"
+           :disabled="!$store.state.userId">Submit</v-btn>
+  </div>
 </template>
 
 <script>

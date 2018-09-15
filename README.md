@@ -1,6 +1,11 @@
-# recorder.over.ai
+# Nuxt.Recorder.Example
 
-> Over.AI TTS Recorder
+> Nuxt Recorder Example App
+
+## Pre Build Setup
+
+Before building the project add in the /api/index.js your mongodb connection to save the recorded sentences data.
+In the /components/Stepper.vue file add the AMAZON-BUCKET details to upload the records.
 
 ## Build Setup
 

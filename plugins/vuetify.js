@@ -14,7 +14,8 @@ import {
     VCard,
     VSubheader,
     VTextField,
-    VDivider
+    VDivider,
+    transitions
 } from 'vuetify';
 import LRU from 'lru-cache';
 
@@ -37,9 +38,9 @@ Vue.use(Vuetify, {
         VCard,
         VSubheader,
         VTextField,
-        VDivider
+        VDivider,
+        transitions
     },
-    iconfont: 'fa',
     options: {
         minifyTheme: function (css) {
             return process.env.NODE_ENV === 'production'
